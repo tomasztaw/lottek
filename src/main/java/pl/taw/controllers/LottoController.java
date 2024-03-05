@@ -7,6 +7,7 @@
  */
 package pl.taw.controllers;
 
+import org.apache.commons.lang3.text.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,5 +43,32 @@ public class LottoController {
         model.addAttribute("winningNumbers", winningNumbers);
         model.addAttribute("probability", probability);
         return "lottoResult";
+    }
+
+    @GetMapping("/combinations")
+    public String getNumberOfCombinations(Model model) {
+        int n = 49; // liczba wszystkich dostępnych liczb
+        int k = 6; // liczba liczb, które musisz wybrać
+
+        long numberOfCombinations = lottoService.calculateNumberOfCombinations(n, k);
+//        String numberOfCombinationsInWords = WordUtils.capitalize(NumberToWordsConverter.convert(numberOfCombinations));
+//        String words = NumberToWords
+        model.addAttribute("numberOfCombinations", numberOfCombinations);
+        return "combinationsView"; // Zwraca nazwę widoku, który ma zostać wyrenderowany
+    }
+
+    @GetMapping("/system")
+    public String resultForSystem(Model model) {
+        int totalNumbers = 49;
+        int selectedNumbers = 12;
+        int drawnNumbers = 6;
+
+        double result = lottoService.calculateProbability(totalNumbers, selectedNumbers, drawnNumbers);
+        model.addAttribute("result", result);
+
+        int percent = (int) result * 100;
+        model.addAttribute("percent", percent);
+
+        return "resultSystem";
     }
 }

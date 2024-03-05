@@ -7,6 +7,7 @@
  */
 package pl.taw.services;
 
+import org.apache.commons.math3.util.CombinatoricsUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -24,4 +25,16 @@ public class LottoService {
         // Implementacja obliczania prawdopodobieństwa wygranej
         return 1.0;
     }
+
+    public long calculateNumberOfCombinations(int n, int k) {
+        return CombinatoricsUtils.binomialCoefficient(n, k);
+    }
+
+    public double calculateProbability(int totalNumbers, int selectedNumbers, int drawnNumbers) {
+        long allCombinations = CombinatoricsUtils.binomialCoefficient(totalNumbers, selectedNumbers);
+        long successfulCombinations = CombinatoricsUtils.binomialCoefficient(selectedNumbers, drawnNumbers);
+
+        return (double) successfulCombinations / allCombinations;
+    }
+
 }
