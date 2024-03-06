@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto Probability</title>
+</head>
+<body>
+<h1>Lotto Probability</h1>
+<p>Combinations of chosen numbers: <span th:text="${combinationsOfChosenNumbers}"></span></p>
+<p>Total combinations: <span th:text="${totalCombinations}"></span></p>
+<p>Probability of winning: <span th:text="${probability}"></span></p>
+
+
+<h1>Lotto Probability</h1>
+<p>Combinations of chosen numbers: <span th:text="${combinationsOfChosenNumbers}"></span></p>
+<p>Total combinations: <span th:text="${totalCombinations}"></span></p>
+<p>Probability of winning: <span th:text="${probability}"></span>%</p>
+
+<h1>Lotto Probability</h1>
+<p>Combinations of chosen numbers: <span th:text="${combinationsOfChosenNumbers}"></span></p>
+<p>Total combinations: <span th:text="${totalCombinations}"></span></p>
+<!--<p>Probability of winning: <span th:text="${#strings.format('%1$.5f', probability)}"></span>%</p>-->
+
+<p>Probability of winning: <span th:text="${roundedProbability}"></span>%</p>
+
+
+<p>Probability of winning: <span th:text="${prob}"></span>%</p>
+
+</body>
+</html>

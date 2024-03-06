@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
+
+    <style>
+        body {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h1>Welcome to Lottek Application!</h1>
-<p>This is a simple Spring Boot application.</p>
+<h1>Aplikacja Uświadamiająca (LOTTEK)!</h1>
+<p>Ta prosta aplikacji ma za zadanie uświadomić Ci jakie jest prawdopodobieństwo wygranej w Dużym Lotku.</p>
+
+<a th:href="@{/combinations}">Ilość kombinacji</a>
+<br>
+
+<a th:href="@{/probability}">System 12 liczb</a>
+<br>
+
+<a th:href="@{/lotto}">Zagraj</a>
+<br>
+
+<a th:href="@{/lotto}">Historyczne wyniki</a>
+<br>
+
+<a th:href="@{/lotto}">Ostatnie losowanie</a>
+<br>
+
+
 </body>
 </html>

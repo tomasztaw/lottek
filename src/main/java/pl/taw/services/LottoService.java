@@ -37,4 +37,16 @@ public class LottoService {
         return (double) successfulCombinations / allCombinations;
     }
 
+    public long calculateNumberOfCombinationsWithOneError(int n, int k, int m) {
+        // Obliczamy kombinacje dla 6 z 49, które są standardowe dla systemu lotto
+        long standardCombinations = calculateNumberOfCombinations(n, k);
+
+        // Obliczamy kombinacje dla 7 z 49, które są możliwe z jednym błędem
+        long combinationsWithOneError = calculateNumberOfCombinations(n - 1, k);
+
+        // Zwracamy różnicę między kombinacjami standardowymi a kombinacjami z jednym błędem
+        return Math.abs(combinationsWithOneError - standardCombinations);
+    }
+
+
 }
