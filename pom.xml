@@ -55,6 +55,7 @@
 
 
 
+<!--		może być do usunięcia - miało czytać liczby-->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -68,6 +69,12 @@
 		</dependency>
 
 
+<!--		pobieranie ostatnich wyników-->
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.17.2</version>
+		</dependency>
 
 
 

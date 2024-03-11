@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.taw.models.LastResult;
 import pl.taw.models.PlayerTicker;
 import pl.taw.services.LottoService;
 import pl.taw.utils.MathUtils;
@@ -102,5 +103,30 @@ public class LottoController {
         model.addAttribute("prob", probabilityNext);
 
         return "probabilityView";
+    }
+
+    // najświeższe losowanie
+    @GetMapping("/last-result")
+    public String getLastResults(Model model) {
+        String lastLotteryId = lottoService.getLastLotteryId();
+        String lastResultNumbers = lottoService.getLastLottoResult();
+        List<String> lotteryDetails = lottoService.getLastLotteryDetails();
+
+        model.addAttribute("lastLotteryId", lastLotteryId);
+        model.addAttribute("lastResultNumbers", lastResultNumbers);
+        model.addAttribute("day", lotteryDetails.get(0));
+        model.addAttribute("date", lotteryDetails.get(1));
+
+        return "lastResult";
+    }
+
+    // najświeższe losowanie, wyświetlanie rekordu
+    @GetMapping("/last-result-rekord")
+    public String getLastResult(Model model) {
+//        LastResult lastResult = new LastResult("lotteryIdValue", "dayOfWeekValue", "dateValue", "numbersValue");
+        LastResult lastResult = lottoService.parseHtmlToLastResult();
+        model.addAttribute("lastResult", lastResult);
+
+        return "last-result-rekord";
     }
 }
